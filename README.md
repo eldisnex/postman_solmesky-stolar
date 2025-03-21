@@ -18,7 +18,37 @@ let response = pm.response.json()
 pm.test("El nombre de la ultima pelicula es : " + response.Search[0].Title)
 ```
 ### 4. Obtener información de la película "Monsters Inc."
+Hacemos un resquest a:  https://www.omdbapi.com/?apikey=[APIKEY]=Monsters Inc donde ponemos como parametro una query de busqueda (con key 't') y valor Monsters Inc. <br>
+Utilizando el siguiente script nos da los siguientes resultados: *"Hay 1,017,055 votos"*
+*"Actuaron los siguientes actores: Pete Docter, David Silverman, Lee Unkrich"*
+```javascript
+let responseJson = pm.response.json();
 
+pm.test(`Hay ${responseJson.imdbVotes} votos`);
+pm.test("Actuaron los siguientes actores: " + responseJson.Director);
+```
 ### 5. Obtener de la película "Rocky IV" algunos datos
+Hacemos un resquest a:  https://www.omdbapi.com/?apikey=[APIKEY]&t=Rocky IV  donde ponemos como parametro una query de busqueda (con key 't') y valor MRocky IV. <br>
+Utilizando el siguiente script nos da los siguientes resultados: *"El/los genero/s es: Drama, Sport"*
+*"El director es: Sylvester Stallone"*
+*"La pelicula dura: 91 min"*
+```javascript
+let responseJson = pm.response.json();
+
+pm.test("El/los genero/s es: " + responseJson.Genre);
+pm.test("El director es: " + responseJson.Director);
+pm.test("La pelicula dura: " + responseJson.Runtime);
+```
 ### 6. Obtener información con un ID de base
+Hacemos un resquest a:  https://www.omdbapi.com/?apikey=[APIKEY]&i=tt0067992 donde ponemos como parametro una query de busqueda (con key 't') y valor MRocky IV. <br>
+Utilizando el siguiente script nos da los siguientes resultados: *"El/los genero/s es: Drama, Sport"*
+*"El director es: Sylvester Stallone"*
+*"La pelicula dura: 91 min"*
+```javascript
+let responseJson = pm.response.json();
+
+pm.test("El/los genero/s es: " + responseJson.Genre);
+pm.test("El director es: " + responseJson.Director);
+pm.test("La pelicula dura: " + responseJson.Runtime);
+```
 # Poke api
