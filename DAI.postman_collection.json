@@ -1,0 +1,468 @@
+{
+	"info": {
+		"_postman_id": "ac54d6ed-30a4-468b-b752-91f625f3a3fe",
+		"name": "DAI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27792712"
+	},
+	"item": [
+		{
+			"name": "TP00_Solmesky-Stolar",
+			"item": [
+				{
+					"name": "ombd API",
+					"item": [
+						{
+							"name": "By search (Cars)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json();\r",
+											"\r",
+											"pm.test(\"La cantidad de peliculas que coinciden con el titulo Cars son \" + response.totalResults);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.omdbapi.com/?apikey=e360e784&s=Cars",
+									"protocol": "https",
+									"host": [
+										"www",
+										"omdbapi",
+										"com"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "e360e784"
+										},
+										{
+											"key": "s",
+											"value": "Cars"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "By title (Hunger)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json()\r",
+											"\r",
+											"pm.test(\"El nombre de la ultima pelicula es : \" + response.Search[0].Title)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.omdbapi.com/?apikey=e360e784&s=Hunger&page=41",
+									"protocol": "https",
+									"host": [
+										"www",
+										"omdbapi",
+										"com"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "e360e784"
+										},
+										{
+											"key": "s",
+											"value": "Hunger"
+										},
+										{
+											"key": "page",
+											"value": "41"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Votos, Actores, Poster (Monsters Inc.)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseJson = pm.response.json();\r",
+											"\r",
+											"pm.test(`Hay ${responseJson.imdbVotes} votos`);\r",
+											"pm.test(\"Actuaron los siguientes actores: \" + responseJson.Director);\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.omdbapi.com/?apikey=e360e784&t=Monsters Inc",
+									"protocol": "https",
+									"host": [
+										"www",
+										"omdbapi",
+										"com"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "e360e784"
+										},
+										{
+											"key": "t",
+											"value": "Monsters Inc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Poster Monsters, Inc.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://m.media-amazon.com/images/M/MV5BMTY1NTI0ODUyOF5BMl5BanBnXkFtZTgwNTEyNjQ0MDE@._V1_SX300.jpg",
+									"protocol": "https",
+									"host": [
+										"m",
+										"media-amazon",
+										"com"
+									],
+									"path": [
+										"images",
+										"M",
+										"MV5BMTY1NTI0ODUyOF5BMl5BanBnXkFtZTgwNTEyNjQ0MDE@._V1_SX300.jpg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Según id (tt0067992)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseJson = pm.response.json();\r",
+											"\r",
+											"pm.test(\"El año en el que se estreno es: \" + responseJson.Year);\r",
+											"pm.test(\"El título es: \" + responseJson.Title);\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.omdbapi.com/?apikey=e360e784&i=tt0067992",
+									"protocol": "https",
+									"host": [
+										"www",
+										"omdbapi",
+										"com"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "e360e784"
+										},
+										{
+											"key": "i",
+											"value": "tt0067992"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Genero, Director, Minutos (Rocky IV)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseJson = pm.response.json();\r",
+											"\r",
+											"pm.test(\"El/los genero/s es: \" + responseJson.Genre);\r",
+											"pm.test(\"El director es: \" + responseJson.Director);\r",
+											"pm.test(\"La pelicula dura: \" + responseJson.Runtime);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.omdbapi.com/?apikey=e360e784&t=Rocky IV",
+									"protocol": "https",
+									"host": [
+										"www",
+										"omdbapi",
+										"com"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "apikey",
+											"value": "e360e784"
+										},
+										{
+											"key": "t",
+											"value": "Rocky IV"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Poke api",
+					"item": [
+						{
+							"name": "Info pokemon (Pikachu)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://pokeapi.co/api/v2/pokemon/pikachu",
+									"protocol": "https",
+									"host": [
+										"pokeapi",
+										"co"
+									],
+									"path": [
+										"api",
+										"v2",
+										"pokemon",
+										"pikachu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tipos de pokemon",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json()\r",
+											"\r",
+											"pm.test(`Hay ${response.count} tipos de pokemon`)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://pokeapi.co/api/v2/pokemon",
+									"protocol": "https",
+									"host": [
+										"pokeapi",
+										"co"
+									],
+									"path": [
+										"api",
+										"v2",
+										"pokemon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pokemon 150",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json()\r",
+											"\r",
+											"pm.test(`El pokemon con ID 150 es: ${response.forms[0].name}`)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://pokeapi.co/api/v2/pokemon/150/",
+									"protocol": "https",
+									"host": [
+										"pokeapi",
+										"co"
+									],
+									"path": [
+										"api",
+										"v2",
+										"pokemon",
+										"150",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Movimientos pokemon charizard",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json()\r",
+											"let moves = \"\";\r",
+											"\r",
+											"console.log(response.moves[0].move.name)\r",
+											"\r",
+											"response.moves.forEach(movement => {\r",
+											"    moves += \"- \" + movement.move.name + \"\\n\";\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Los movimientos que puede aprender son: \")\r",
+											"pm.test(moves)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://pokeapi.co/api/v2/pokemon/charizard/",
+									"protocol": "https",
+									"host": [
+										"pokeapi",
+										"co"
+									],
+									"path": [
+										"api",
+										"v2",
+										"pokemon",
+										"charizard",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Movimientos pokemon charizard Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response = pm.response.json()\r",
+											"pm.test(`La altura del pokemon es de: ${response.height} decímetros`) // DM / decimetros\r",
+											"pm.test(`El peso del pokemon es de : ${response.weight} hectogramos`) // HG / hectogramos\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://pokeapi.co/api/v2/pokemon/bulbasaur/",
+									"protocol": "https",
+									"host": [
+										"pokeapi",
+										"co"
+									],
+									"path": [
+										"api",
+										"v2",
+										"pokemon",
+										"bulbasaur",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
